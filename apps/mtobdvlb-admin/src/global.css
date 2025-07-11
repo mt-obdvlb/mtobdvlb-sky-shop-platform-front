@@ -1,0 +1,12 @@
+@layer theme, base, mui, components, utilities;
+@import 'tailwindcss';
+
+html, body, #root {
+  @apply overflow-hidden h-screen w-screen;
+}
+
+@layer utilities {
+  .transition-width {
+    transition-property: width;
+  }
+}

@@ -1,5 +1,4 @@
 node_modules
-dist
-build
-coverage
-.husky
+*.svg
+/apps/mtobdvlb-admin/src/global.css
+.
