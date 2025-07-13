@@ -25,7 +25,9 @@ const ConfirmButton: React.FC<ConfirmButtonProps> = ({
   },
   confirmationButtonProps = {
     variant: 'contained',
-    color: 'warning'
+    sx: {
+      backgroundColor: '#F6C443'
+    }
   },
   cancellationButtonProps = {
     variant: 'contained',

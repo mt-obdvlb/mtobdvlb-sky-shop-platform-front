@@ -9,4 +9,8 @@ html, body, #root {
   .transition-width {
     transition-property: width;
   }
+  
+  .bg-primary {
+    background-color: #F6C343;
+  }
 }

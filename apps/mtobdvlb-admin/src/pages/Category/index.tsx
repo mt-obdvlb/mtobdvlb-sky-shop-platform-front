@@ -133,7 +133,7 @@ const Category = () => {
       reset({
         name: '',
         sort: undefined,
-        type: undefined,
+        type: type,
         id: undefined
       })
       if (type === 1) {
@@ -246,6 +246,7 @@ const Category = () => {
   }
 
   const onSubmit = async (data: FormData) => {
+    console.log(data)
     if (categoryId) {
       try {
         await updateCategory({
@@ -296,6 +297,7 @@ const Category = () => {
               <TextField placeholder={'请输入分类名称'} />
               <Typography>分类类型:</Typography>
               <CommonSelect
+                placeholder={'请选择'}
                 options={[
                   {
                     label: '菜品分类',
@@ -319,7 +321,7 @@ const Category = () => {
             <div className={'flex gap-3'}>
               <Button
                 startIcon={<PlusIcon className={'size-4'} />}
-                onClick={() => handleUpdateOrAdd(undefined, 2)}
+                onClick={() => handleUpdateOrAdd(undefined, 1)}
                 variant={'contained'}
               >
                 添加菜品分类

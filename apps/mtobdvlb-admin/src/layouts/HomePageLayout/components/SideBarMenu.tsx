@@ -58,22 +58,28 @@ const SideBarMenu = () => {
   return (
     <List
       color={'black'}
-      className={'relative flex flex-col gap-5 overflow-hidden bg-orange-500 px-2 pt-10'}
+      className={'relative flex flex-col gap-5 overflow-hidden bg-[#353743] px-2'}
     >
       {menuList.map(item => (
         <ListItemButton
-          selected={location.pathname === item.path}
+          selected={location.pathname.includes(item.path)}
           sx={{
             '&.Mui-selected': {
-              backgroundColor: 'rgba(0, 0, 0, 0.04)',
-              color: 'purple'
+              backgroundColor: '#E3E3E3',
+              color: '#333'
             },
-            color: 'inherit'
+            '&.Mui-selected:hover': {
+              backgroundColor: '#E3E3E3' // 保持 hover 时不变色
+            },
+            color: '#C1CBD8',
+            '&:hover': {
+              backgroundColor: '#4D4D4D'
+            }
           }}
           to={item.path}
           component={NavLink}
           key={item.name}
-          className={'flex w-full items-center gap-2 rounded py-3'}
+          className={'h-13 flex w-full items-center gap-2 rounded py-3'}
         >
           <ListItemIcon>{item.icon}</ListItemIcon>
           {!isCollapsed && <Typography className={'whitespace-nowrap'}>{item.name}</Typography>}

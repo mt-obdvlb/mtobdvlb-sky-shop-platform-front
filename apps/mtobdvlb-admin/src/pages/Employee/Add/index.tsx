@@ -15,8 +15,8 @@ import { useGetPathNumberId } from '@/hooks/useGetPathNumberId.ts'
 import { useEffect } from 'react'
 
 const FormSchema = z.object({
-  name: z.string().min(1, '请输入姓名'),
-  username: z.string().min(1, '请输入用户名'),
+  name: z.string().min(1, '请输入账号'),
+  username: z.string().min(1, '请输入员工姓名'),
   sex: z.literal(['0', '1']),
   phone: z.string().regex(/^1[3-9]\d{9}$/, '请输入正确的手机号码'),
   idNumber: z
@@ -103,21 +103,24 @@ const EmployeeAdd = () => {
 
   return (
     <>
-      <div className={'flex h-full flex-col bg-gray-400 p-4'}>
+      <div className={'flex h-full flex-col p-4'}>
         <div className={'flex items-center'}>
           <Button
             startIcon={<ArrowLeft />}
             component={Link}
             to={'/employee'}
             variant={'text'}
-            className={'border-r- rounded-none border-r pr-3 text-black'}
+            className={'border-r- rounded-none border-r pr-3 text-xl text-black'}
             size={'small'}
           >
             返回
           </Button>
           <Typography className={'ml-3'}>{id ? '修改员工信息' : '添加员工'}</Typography>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className={'flex flex-col rounded bg-white shadow'}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={'mt-6 flex flex-col rounded bg-white shadow'}
+        >
           <div className={'px-30 flex flex-col gap-5 border-b py-10'}>
             <Controller
               name={'name'}
@@ -125,7 +128,8 @@ const EmployeeAdd = () => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label={'姓名'}
+                  label={'账号'}
+                  placeholder={'请输入账号名'}
                   error={!!errors.name}
                   helperText={errors.name?.message}
                   className={'w-1/2'}
@@ -140,7 +144,8 @@ const EmployeeAdd = () => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label={'用户名'}
+                  label={'员工姓名'}
+                  placeholder={'请输入员工姓名'}
                   error={!!errors.username}
                   helperText={errors.username?.message}
                   className={'w-1/2'}
@@ -155,6 +160,7 @@ const EmployeeAdd = () => {
                 <TextField
                   {...field}
                   label={'手机号'}
+                  placeholder={'请输入手机号'}
                   error={!!errors.phone}
                   helperText={errors.phone?.message}
                   className={'w-1/2'}
@@ -172,8 +178,32 @@ const EmployeeAdd = () => {
                   onChange={event => field.onChange(event.target.value)}
                   className={'flex flex-row gap-3'}
                 >
-                  <FormControlLabel value={'1'} control={<Radio />} label={'男'} />
-                  <FormControlLabel value={'0'} control={<Radio />} label={'女'} />
+                  <FormControlLabel
+                    value={'1'}
+                    control={
+                      <Radio
+                        sx={{
+                          '&.Mui-checked': {
+                            color: '#F6C343'
+                          }
+                        }}
+                      />
+                    }
+                    label={'男'}
+                  />
+                  <FormControlLabel
+                    value={'0'}
+                    control={
+                      <Radio
+                        sx={{
+                          '&.Mui-checked': {
+                            color: '#F6C343'
+                          }
+                        }}
+                      />
+                    }
+                    label={'女'}
+                  />
                 </RadioGroup>
               )}
             />
@@ -188,6 +218,7 @@ const EmployeeAdd = () => {
                   helperText={errors.idNumber?.message}
                   className={'w-1/2'}
                   variant={'outlined'}
+                  placeholder={'请输入身份证号'}
                 />
               )}
             />
@@ -196,11 +227,16 @@ const EmployeeAdd = () => {
             <Button size={'large'} component={Link} to={'/employee'} variant={'outlined'}>
               取消
             </Button>
-            <Button size={'large'} onClick={handleSubmit(onSave)} variant={'contained'}>
+            <Button
+              size={'large'}
+              className={'bg-[#333]'}
+              onClick={handleSubmit(onSave)}
+              variant={'contained'}
+            >
               保存
             </Button>
             {!id && (
-              <Button size={'large'} type={'submit'} variant={'contained'}>
+              <Button size={'large'} className={'bg-primary'} type={'submit'} variant={'contained'}>
                 保存并继续
               </Button>
             )}

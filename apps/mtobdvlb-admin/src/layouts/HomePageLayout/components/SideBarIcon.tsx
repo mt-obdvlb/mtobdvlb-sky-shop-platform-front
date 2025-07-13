@@ -7,8 +7,8 @@ const SideBarIcon = () => {
   const isCollapsed = useAppSelector(state => state.shop.isCollapsed)
 
   return (
-    <div className={'h-17 flex shrink-0 items-center justify-center bg-amber-500 ' + clsx({})}>
-      <Logo className={'size-15 text-blue-400'} />
+    <div className={'h-17 bg-primary flex shrink-0 items-center justify-center ' + clsx({})}>
+      <Logo className={'size-15 text-black'} />
       {!isCollapsed && (
         <Typography variant={'h5'} fontFamily={'serif'} className={'whitespace-nowrap'}>
           MTO 外卖

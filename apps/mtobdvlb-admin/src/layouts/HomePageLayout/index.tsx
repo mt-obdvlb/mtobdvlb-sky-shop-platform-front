@@ -8,7 +8,7 @@ const HomePageLayout = () => {
       <SideBar />
       <div className={'flex min-w-0 flex-1 flex-col overflow-hidden transition-all duration-300'}>
         <NavBar />
-        <div className={'flex-1 overflow-y-auto bg-green-500'}>
+        <div className={'flex-1 overflow-y-auto bg-[#F3F4F7]'}>
           <Outlet />
         </div>
       </div>

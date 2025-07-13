@@ -4,7 +4,7 @@ import StatusBar from '@/layouts/HomePageLayout/components/StatusBar.tsx'
 
 const NavBar = () => {
   return (
-    <div className={'h-17 flex w-full justify-between bg-red-500 px-4'}>
+    <div className={'h-17 bg-primary flex w-full justify-between px-4'}>
       <StatusBar />
       <div className={'flex h-full'}>
         <ShopStatusConfig />

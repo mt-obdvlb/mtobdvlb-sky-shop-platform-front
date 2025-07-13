@@ -53,9 +53,7 @@ const ShopStatusConfig = () => {
       <Button
         onClick={() => setDialogOpen(true)}
         color={'inherit'}
-        className={
-          'w-35 mr-5 flex h-full items-center justify-center rounded-none bg-purple-400 hover:bg-purple-500'
-        }
+        className={'w-35 mr-5 flex h-full items-center justify-center rounded-none'}
       >
         <Typography
           className={'flex items-center justify-center'}
@@ -75,20 +73,22 @@ const ShopStatusConfig = () => {
                 <div
                   onClick={() => setShopStatus(item.value)}
                   className={
-                    'max-w-75 mb-1 mt-3 cursor-pointer rounded border border-gray-400 px-5 py-2 ' +
+                    'max-w-75 mb-1 mt-3 cursor-pointer rounded border px-5 py-2 ' +
                     clsx({
-                      'border-purple-950': item.value === shopStatus
+                      'border-[#F6C343]': item.value === shopStatus,
+                      'border-gray-400': item.value !== shopStatus
                     })
                   }
                   key={item.label}
                 >
                   <FormControlLabel
+                    className={'border-none'}
                     control={
                       <Radio
                         sx={{
                           color: 'gray',
                           '&.Mui-checked': {
-                            color: 'purple'
+                            color: '#F6C343'
                           }
                         }}
                         color={'default'}
@@ -105,7 +105,7 @@ const ShopStatusConfig = () => {
               ))}
             </RadioGroup>
           </DialogContent>
-          <DialogActions>
+          <DialogActions className={'px-5 pb-5'}>
             <Button
               onClick={() => setDialogOpen(false)}
               className={'border-gray-400 text-gray-400'}
@@ -116,7 +116,7 @@ const ShopStatusConfig = () => {
             <Button
               type={'submit'}
               onClick={handleSubmit}
-              className={'text-black'}
+              className={'bg-primary text-black'}
               variant={'contained'}
             >
               确认

@@ -167,7 +167,7 @@ const Employee = () => {
   return (
     <>
       <div className={'h-full px-5 pt-5'}>
-        <div className={'h-min-100 flex flex-col rounded bg-white p-5 shadow'}>
+        <div className={'h-min-100 flex flex-col rounded bg-white p-7 shadow'}>
           <div className={'flex items-center justify-between'}>
             <div className={'flex items-center gap-4'}>
               <Typography>员工姓名:</Typography>
@@ -176,11 +176,21 @@ const Employee = () => {
                 onChange={e => setInputName(e.target.value)}
                 placeholder={'请输入员工姓名'}
               />
-              <Button variant={'contained'} onClick={() => setName(inputName)}>
+              <Button
+                variant={'contained'}
+                className={'bg-[#333]'}
+                onClick={() => setName(inputName)}
+              >
                 查询
               </Button>
             </div>
-            <Button to={'add'} component={Link} variant={'contained'} startIcon={<PlusIcon />}>
+            <Button
+              to={'add'}
+              component={Link}
+              className={'bg-primary'}
+              variant={'contained'}
+              startIcon={<PlusIcon />}
+            >
               添加员工
             </Button>
           </div>

@@ -6,5 +6,5 @@ export const baseApi = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithErrorHandling,
   endpoints: () => ({}), // 初始空，后续模块扩展
-  tagTypes: ['ShopStatus', 'Employee', 'Dish', 'Category']
+  tagTypes: ['ShopStatus', 'Employee', 'Dish', 'Category', 'Setmeal', 'Order']
 })

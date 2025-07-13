@@ -23,6 +23,7 @@ type CommonSelectProps = {
   error?: boolean
   helperText?: string
   size?: 'small' | 'medium'
+  fullWidth?: boolean
 }
 
 const CommonSelect: React.FC<CommonSelectProps> = ({
@@ -35,13 +36,22 @@ const CommonSelect: React.FC<CommonSelectProps> = ({
   helperText,
   size = 'small',
   className,
+  fullWidth,
   ...res
 }) => {
   return (
     <>
-      <FormControl className={'min-w-40'} size={size} error={error}>
+      <FormControl className={'min-w-40'} size={size} error={error} fullWidth={fullWidth}>
         {label && <InputLabel>{label}</InputLabel>}
         <Select
+          sx={{
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#F6C343' // 选中时边框颜色
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#F6C343' // hover 时边框颜色
+            }
+          }}
           className={className}
           {...res}
           displayEmpty

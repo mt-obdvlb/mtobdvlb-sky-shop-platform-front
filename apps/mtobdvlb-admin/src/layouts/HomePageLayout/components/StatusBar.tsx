@@ -25,7 +25,16 @@ const StatusBar = () => {
         }
         onClick={handleClick}
       />
-      <Typography color={'white'} className={'rounded border border-white bg-red-500 px-2 py-1'}>
+      <Typography
+        color={'white'}
+        className={
+          'rounded border border-white px-2 py-1 ' +
+          clsx({
+            'bg-red-500': res?.data,
+            'bg-[#6A6A6A]': !res?.data
+          })
+        }
+      >
         {res?.data ? <span>营业中</span> : <span>打烊中</span>}
       </Typography>
     </div>

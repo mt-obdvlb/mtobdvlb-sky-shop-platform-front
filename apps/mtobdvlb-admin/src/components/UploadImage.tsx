@@ -49,7 +49,7 @@ const UploadImage = <T extends FieldValues>({ control, name }: UploadImageProps<
               <Box
                 {...getRootProps()}
                 className={
-                  'size-42 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 object-cover'
+                  'size-42 flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-gray-300 object-cover'
                 }
               >
                 <input {...getInputProps()} />

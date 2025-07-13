@@ -144,7 +144,7 @@ const UserMenu = () => {
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className={'w-30 relative h-10 rounded bg-amber-500' + clsx({})}
+          className={'w-30 relative h-10 rounded bg-[#FBE2A5]' + clsx({})}
         >
           <Button
             variant={'text'}
@@ -152,7 +152,8 @@ const UserMenu = () => {
             color={'inherit'}
             disableRipple
             className={clsx({
-              'absolute flex h-full w-full cursor-pointer items-center justify-between px-2': true
+              'absolute flex h-full w-full cursor-pointer items-center justify-between overflow-visible px-2':
+                true
             })}
           >
             <Typography variant={'body2'}>{user.name}</Typography>
@@ -161,9 +162,9 @@ const UserMenu = () => {
             </Typography>
           </Button>
           <Box
-            bgcolor={'inherit'}
+            bgcolor={'white'}
             className={
-              'absolute left-0 top-0 flex w-full flex-col rounded ' +
+              'z-100 absolute left-0 top-0 flex w-full flex-col rounded ' +
               clsx({
                 hidden: !popupState.isOpen
               })
@@ -221,11 +222,11 @@ const UserMenu = () => {
               ))}
             </div>
           </DialogContent>
-          <DialogActions className={'px-15 pb-10'}>
+          <DialogActions className={'px-20 pb-10'}>
             <Button size={'large'} variant={'outlined'} onClick={() => setDialogOpen(false)}>
               取消
             </Button>
-            <Button size={'large'} variant={'contained'} type={'submit'}>
+            <Button size={'large'} variant={'contained'} type={'submit'} className={'bg-primary'}>
               保存
             </Button>
           </DialogActions>

@@ -12,6 +12,7 @@ import RouteGuard from '@/components/RouteGuard.tsx'
 import Category from '@/pages/Category'
 import EmployeeAdd from '@/pages/Employee/Add'
 import DishAdd from '@/pages/Dish/Add'
+import SetmealAdd from '@/pages/Setmeal/Add'
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
           {
             path: 'dish/add',
             element: <DishAdd />
+          },
+          {
+            path: 'setmeal/add',
+            element: <SetmealAdd />
           }
         ]
       }

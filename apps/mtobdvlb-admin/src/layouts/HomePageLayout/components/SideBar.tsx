@@ -9,7 +9,7 @@ const SideBar = () => {
   return (
     <div
       className={
-        'transition-width flex h-screen min-h-screen shrink-0 flex-col overflow-hidden bg-blue-500 duration-300 ' +
+        'transition-width flex h-screen min-h-screen shrink-0 flex-col overflow-hidden bg-[#353743] duration-300 ' +
         clsx({
           'w-20': isCollapsed,
           'w-50': !isCollapsed
