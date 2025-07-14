@@ -18,6 +18,7 @@ import DishFlavorChip from '@/pages/Dish/Add/components/DishFlavorChip.tsx'
 import { useEffect, useState } from 'react'
 import { useGetPathNumberId } from '@/hooks/useGetPathNumberId.ts'
 import { skipToken } from '@reduxjs/toolkit/query'
+import { Helmet } from 'react-helmet-async'
 
 const formSchema = z.object({
   name: z.string().min(1, '请输入菜品名称').max(20),
@@ -151,6 +152,9 @@ const DishAdd = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{id ? '编辑菜品' : '添加菜品'}</title>
+      </Helmet>
       <div className={'min-h-full w-full p-4'}>
         <form
           onSubmit={handleSubmit(onSubmit)}

@@ -19,6 +19,7 @@ import CommonSelect from '@/components/CommonSelect.tsx'
 import ConfirmButton from '@/components/ConfirmButton.tsx'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 type SearchParams = {
   name?: string
@@ -197,6 +198,9 @@ const Dish = () => {
   }
   return (
     <>
+      <Helmet>
+        <title>菜品管理</title>
+      </Helmet>
       <div className={'min-h-full scroll-auto p-5'}>
         <div className={'flex flex-col rounded bg-white px-3 py-5 shadow'}>
           <div className={'flex items-center justify-between'}>

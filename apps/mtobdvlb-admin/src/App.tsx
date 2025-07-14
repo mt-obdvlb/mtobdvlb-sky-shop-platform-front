@@ -1,14 +1,17 @@
 import { Outlet } from 'react-router-dom'
 import { useProgress } from '@/hooks/useProgress.ts'
 import { ConfirmProvider } from 'material-ui-confirm'
+import { HelmetProvider } from 'react-helmet-async'
 
 const App = () => {
   useProgress()
   return (
     <>
-      <ConfirmProvider>
-        <Outlet />
-      </ConfirmProvider>
+      <HelmetProvider>
+        <ConfirmProvider>
+          <Outlet />
+        </ConfirmProvider>
+      </HelmetProvider>
     </>
   )
 }

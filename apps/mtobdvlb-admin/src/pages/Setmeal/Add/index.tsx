@@ -35,6 +35,7 @@ import {
 } from '@/features/setmeal/setmealApi.ts'
 import { toast } from 'react-toastify'
 import { useGetPathNumberId } from '@/hooks/useGetPathNumberId.ts'
+import { Helmet } from 'react-helmet-async'
 
 const formSchema = z.object({
   name: z.string().min(1, '请输入套餐名称').max(20),
@@ -256,6 +257,9 @@ const SetmealAdd = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{id ? '修改套餐' : '添加套餐'}</title>
+      </Helmet>
       <div className={'min-h-full p-5'}>
         <form
           onSubmit={handleSubmit(onSubmit)}

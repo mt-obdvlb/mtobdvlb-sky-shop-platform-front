@@ -28,6 +28,7 @@ import { z } from 'zod/v4'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { skipToken } from '@reduxjs/toolkit/query'
+import { Helmet } from 'react-helmet-async'
 
 type Props = {
   name: string
@@ -289,6 +290,9 @@ const Category = () => {
 
   return (
     <>
+      <Helmet>
+        <title>分类管理</title>
+      </Helmet>
       <div className={'min-h-full w-full scroll-auto p-5'}>
         <div className={'flex h-full flex-col rounded bg-white p-4 shadow'}>
           <div className={'flex items-center justify-between'}>

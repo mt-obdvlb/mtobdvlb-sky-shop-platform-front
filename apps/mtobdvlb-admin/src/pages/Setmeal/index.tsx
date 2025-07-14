@@ -20,6 +20,7 @@ import clsx from 'clsx'
 import ConfirmButton from '@/components/ConfirmButton.tsx'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 type SearchParams = {
   name?: string
@@ -191,6 +192,9 @@ const Setmeal = () => {
 
   return (
     <>
+      <Helmet>
+        <title>套餐管理</title>
+      </Helmet>
       <div className={'min-h-full scroll-auto p-5'}>
         <div className={'flex h-full flex-col bg-white p-5'}>
           <div className={'flex items-center justify-between'}>

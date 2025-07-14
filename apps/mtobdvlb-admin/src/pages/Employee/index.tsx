@@ -13,6 +13,7 @@ import type { EmployeeStatus } from '@/types/employee.ts'
 import { toast } from 'react-toastify'
 import clsx from 'clsx'
 import ConfirmButton from '@/components/ConfirmButton.tsx'
+import { Helmet } from 'react-helmet-async'
 
 const Employee = () => {
   const [paginationModel, setPaginationModel] = useState({
@@ -166,6 +167,9 @@ const Employee = () => {
 
   return (
     <>
+      <Helmet>
+        <title>员工管理</title>
+      </Helmet>
       <div className={'h-full px-5 pt-5'}>
         <div className={'h-min-100 flex flex-col rounded bg-white p-7 shadow'}>
           <div className={'flex items-center justify-between'}>

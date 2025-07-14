@@ -13,6 +13,7 @@ import {
 import { skipToken } from '@reduxjs/toolkit/query'
 import { useGetPathNumberId } from '@/hooks/useGetPathNumberId.ts'
 import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 const FormSchema = z.object({
   name: z.string().min(1, '请输入账号'),
@@ -103,6 +104,9 @@ const EmployeeAdd = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{id ? '修改员工信息' : '添加员工'}</title>
+      </Helmet>
       <div className={'flex h-full flex-col p-4'}>
         <div className={'flex items-center'}>
           <Button
