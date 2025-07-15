@@ -228,7 +228,13 @@ const EmployeeAdd = () => {
             />
           </div>
           <div className={'flex items-center justify-center gap-5 py-4'}>
-            <Button size={'large'} component={Link} to={'/employee'} variant={'outlined'}>
+            <Button
+              className={'default'}
+              size={'large'}
+              component={Link}
+              to={'/employee'}
+              variant={'outlined'}
+            >
               取消
             </Button>
             <Button
@@ -240,7 +246,12 @@ const EmployeeAdd = () => {
               保存
             </Button>
             {!id && (
-              <Button size={'large'} className={'bg-primary'} type={'submit'} variant={'contained'}>
+              <Button
+                size={'large'}
+                className={'bg-primary text-black'}
+                type={'submit'}
+                variant={'contained'}
+              >
                 保存并继续
               </Button>
             )}

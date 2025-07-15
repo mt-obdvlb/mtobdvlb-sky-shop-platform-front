@@ -127,6 +127,7 @@ const Dish = () => {
                 className={'h- rounded-none border-x border-x-gray-200'}
                 onConfirm={() => handleDelete(params.row.id)}
                 title={'删除'}
+                color={'error'}
               >
                 删除
               </ConfirmButton>
@@ -196,6 +197,7 @@ const Dish = () => {
       console.log(e)
     }
   }
+
   return (
     <>
       <Helmet>
@@ -257,12 +259,17 @@ const Dish = () => {
                   }
                 ]}
               />
-              <Button variant={'contained'} onClick={() => setSearchParams(currentSearchParams)}>
+              <Button
+                className={'bg-[#333] text-white'}
+                variant={'contained'}
+                onClick={() => setSearchParams(currentSearchParams)}
+              >
                 查询
               </Button>
             </div>
             <div className={'flex items-center gap-3'}>
               <ConfirmButton
+                color={'error'}
                 title={'删除'}
                 variant={'text'}
                 onConfirm={handleDelete}
@@ -282,6 +289,7 @@ const Dish = () => {
                 批量删除
               </ConfirmButton>
               <Button
+                className={'bg-[#F6C443] text-black'}
                 component={Link}
                 to={'/dish/add'}
                 variant={'contained'}
@@ -307,6 +315,22 @@ const Dish = () => {
             disableRowSelectionOnClick
             rowSelectionModel={selectionModel}
             onRowSelectionModelChange={setSelectionModel}
+            slotProps={{
+              baseCheckbox: {
+                sx: {
+                  color: '#D9DDE2', // 默认颜色
+                  '&.Mui-checked': {
+                    color: '#F6C343' // 选中颜色
+                  },
+                  '&.MuiCheckbox-indeterminate': {
+                    color: '#F6C343' // 部分选中时的颜色
+                  },
+                  '&:hover': {
+                    color: '#F6C343' // 鼠标悬停时的背景颜色
+                  }
+                }
+              }
+            }}
           />
         </div>
       </div>

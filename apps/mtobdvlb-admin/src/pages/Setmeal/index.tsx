@@ -150,6 +150,7 @@ const Setmeal = () => {
             <ConfirmButton
               variant={'text'}
               title={'删除'}
+              color={'error'}
               onConfirm={() => handleDeleteSetmeal(params.row.id)}
             >
               删除
@@ -238,12 +239,13 @@ const Setmeal = () => {
                   { label: '停售', value: 0 }
                 ]}
               />
-              <Button onClick={handleSearch} variant={'contained'}>
+              <Button onClick={handleSearch} variant={'contained'} className={'secondary'}>
                 查询
               </Button>
             </div>
             <div className={'flex items-center gap-3'}>
               <ConfirmButton
+                color={'error'}
                 variant={'text'}
                 size={'small'}
                 onConfirm={() => handleDeleteSetmeal()}
@@ -251,6 +253,7 @@ const Setmeal = () => {
                 批量删除
               </ConfirmButton>
               <Button
+                className={'bg-primary'}
                 variant={'contained'}
                 size={'small'}
                 component={Link}
@@ -278,6 +281,22 @@ const Setmeal = () => {
             onRowSelectionModelChange={setSelectionModel}
             checkboxSelection
             pageSizeOptions={[3, 10, 20, 100]}
+            slotProps={{
+              baseCheckbox: {
+                sx: {
+                  color: '#D9DDE2', // 默认颜色
+                  '&.Mui-checked': {
+                    color: '#F6C343' // 选中颜色
+                  },
+                  '&.MuiCheckbox-indeterminate': {
+                    color: '#F6C343' // 部分选中时的颜色
+                  },
+                  '&:hover': {
+                    color: '#F6C343' // 鼠标悬停时的背景颜色
+                  }
+                }
+              }
+            }}
           />
         </div>
       </div>

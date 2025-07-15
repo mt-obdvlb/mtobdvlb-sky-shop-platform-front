@@ -6,6 +6,7 @@ import { LockIcon, LogInIcon, User } from 'lucide-react'
 import { useLoginUserMutation } from '@/features/user/userApi.ts'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useAppSelector } from '@/store/hooks.ts'
 
 const loginFormSchema = z.object({
   username: z.string().min(1, '用户名不能为空'),
@@ -31,10 +32,17 @@ const LoginForm = () => {
 
   const [loginUser, { isLoading }] = useLoginUserMutation()
 
+  const token = useAppSelector(state => state.user.token)
+
   const navigate = useNavigate()
   const location = useLocation()
 
   const onSubmit = async (data: FormData) => {
+    if (token) {
+      toast.info('您已经登录，无需重复登录')
+      navigate('/')
+      return
+    }
     try {
       await loginUser(data).unwrap()
       const redirect = new URLSearchParams(location.search)

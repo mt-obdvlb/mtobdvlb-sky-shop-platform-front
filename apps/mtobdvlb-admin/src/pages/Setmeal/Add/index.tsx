@@ -36,6 +36,7 @@ import {
 import { toast } from 'react-toastify'
 import { useGetPathNumberId } from '@/hooks/useGetPathNumberId.ts'
 import { Helmet } from 'react-helmet-async'
+import clsx from 'clsx'
 
 const formSchema = z.object({
   name: z.string().min(1, '请输入套餐名称').max(20),
@@ -75,12 +76,13 @@ const SetmealAdd = () => {
   })
 
   const [dialogOpen, setDialogOpen] = useState(false)
-  const [categoryId, setCategoryId] = useState<number>()
   const [selectedDish, setSelectedDish] = useState<DishSelectedParams[]>([])
   const [setmealDishes, setSetmealDishes] = useState<SetmealDish[]>([])
 
   const { data: setmealCategoryData } = useGetCategoryListByTypeQuery(2)
   const { data: categoryData } = useGetCategoryListByTypeQuery(1)
+  const [categoryId, setCategoryId] = useState<number>()
+
   const { data } = useGetDishListByCategoryIdQuery(categoryId ?? skipToken)
   const dishData: DishSelectedParams[] =
     data?.data.map(item => ({
@@ -235,6 +237,7 @@ const SetmealAdd = () => {
         renderCell: params => (
           <div className={'flex items-center justify-center'}>
             <Button
+              color={'error'}
               variant={'text'}
               onClick={() => {
                 setSetmealDishes(prev => prev.filter(dish => dish.dishId !== params.row.id))
@@ -254,6 +257,12 @@ const SetmealAdd = () => {
     align: 'center',
     ...item
   }))
+
+  useEffect(() => {
+    if (!categoryId && categoryData?.data.length) {
+      setCategoryId(categoryData.data[0].id)
+    }
+  }, [categoryData, categoryId])
 
   return (
     <>
@@ -338,13 +347,14 @@ const SetmealAdd = () => {
             {setmealDishes?.length ? (
               <div
                 className={
-                  'min-h-50 w-200 flex flex-col rounded border border-gray-400 bg-gray-200 px-20 py-10 shadow'
+                  'min-h-50 w-200 flex flex-col rounded border border-[#D9DDE2] bg-[#FAFAFB] p-5 shadow'
                 }
               >
                 <Button
                   onClick={() => setDialogOpen(true)}
                   startIcon={<PlusIcon />}
                   variant={'contained'}
+                  className={'bg-primary w-40'}
                 >
                   添加菜品
                 </Button>
@@ -354,7 +364,7 @@ const SetmealAdd = () => {
                   disableRowSelectionOnClick
                   disableColumnResize
                   disableMultipleRowSelection
-                  className={'mt-20'}
+                  className={'mt-5'}
                   columns={columns}
                   rows={setmealDishes.map(item => ({
                     id: item.dishId,
@@ -369,6 +379,7 @@ const SetmealAdd = () => {
                 onClick={() => setDialogOpen(true)}
                 startIcon={<PlusIcon />}
                 variant={'contained'}
+                className={'bg-primary'}
               >
                 添加菜品
               </Button>
@@ -392,14 +403,21 @@ const SetmealAdd = () => {
             />
           </div>
           <div className={'flex items-center justify-center gap-5'}>
-            <Button variant={'outlined'} component={Link} to={'/setmeal'}>
+            <Button variant={'outlined'} className={'default'} component={Link} to={'/setmeal'}>
               取消
             </Button>
-            <Button onClick={handleSubmit(onSave)} variant={'contained'}>
+            <Button
+              onClick={handleSubmit(onSave)}
+              variant={'contained'}
+              className={clsx({
+                'bg-primary': id,
+                'bg-[#333] text-white': !id
+              })}
+            >
               保存
             </Button>
             {!id && (
-              <Button type={'submit'} variant={'contained'}>
+              <Button className={'bg-primary'} type={'submit'} variant={'contained'}>
                 保存并继续
               </Button>
             )}
@@ -426,12 +444,11 @@ const SetmealAdd = () => {
             <List className={'min-w-30 h-full overflow-y-auto border-r border-r-gray-200'}>
               {categoryData?.data.map(item => (
                 <ListItemButton
-                  defaultChecked={item.id === categoryData.data[0].id}
                   className={'w-full'}
                   sx={{
                     '&.Mui-selected': {
-                      color: 'yellowgreen',
-                      borderRightColor: 'yellowgreen',
+                      color: '#F6C443',
+                      borderRightColor: '#F6C443',
                       borderRight: '1px solid'
                     }
                   }}
@@ -443,14 +460,12 @@ const SetmealAdd = () => {
               ))}
             </List>
             <List
-              className={
-                'flex h-full flex-1 flex-col items-center gap-2 overflow-y-scroll pr-2 text-xs'
-              }
+              className={'flex h-full flex-1 flex-col items-center overflow-y-scroll pr-2 text-xs'}
             >
               {dishData.map(item => (
-                <ListItem key={item.id} className={'h-20 w-full p-0'}>
+                <ListItem key={item.id} className={'h-15 m-0 w-full p-0'}>
                   <ListItemButton
-                    className={'flex border border-gray-400'}
+                    className={'m-0 flex border border-[#F4F4F4]'}
                     onClick={() =>
                       setSelectedDish(prev => {
                         if (prev.find(dish => dish.id === item.id))
@@ -459,13 +474,13 @@ const SetmealAdd = () => {
                       })
                     }
                   >
-                    <ListItemIcon className={''}>
+                    <ListItemIcon className={'m-0'}>
                       <Checkbox
                         value={item.id}
                         checked={!!selectedDish.find(dish => dish.id === item.id)}
                       />
                     </ListItemIcon>
-                    <div className={'flex flex-1 justify-between text-xs'}>
+                    <div className={'m-0 flex flex-1 justify-between text-xs'}>
                       <Typography className={'text-xs'}>{item.name}</Typography>
                       <Typography className={'text-xs'}>{'在售  ' + item.price}</Typography>
                     </div>
@@ -513,6 +528,7 @@ const SetmealAdd = () => {
                 }))
               )
             }}
+            className={'default'}
           >
             取消
           </Button>
@@ -529,6 +545,7 @@ const SetmealAdd = () => {
               )
               setDialogOpen(false)
             }}
+            className={'bg-primary'}
           >
             确认
           </Button>

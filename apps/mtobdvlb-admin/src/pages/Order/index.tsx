@@ -1,6 +1,6 @@
 import { Button, List, ListItemButton, TextField, Typography } from '@mui/material'
 import { OrderStatus } from '@/types/order.ts'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useGetOrderPageListQuery } from '@/features/order/orderApi.ts'
 import { DataGrid, type GridColDef, type GridRowsProp } from '@mui/x-data-grid'
 import { DatePicker } from '@mui/x-date-pickers'
@@ -9,6 +9,8 @@ import OrderReasonDialog from '@/components/OrderReasonDialog.tsx'
 import OrderDetailDialog from '@/components/OrderDetailDialog.tsx'
 import useOrderActions from '@/hooks/useOrderActions.ts'
 import { Helmet } from 'react-helmet-async'
+import { useAppDispatch, useAppSelector } from '@/store/hooks.ts'
+import { clearSocket } from '@/features/socket/socketSlice.ts'
 
 type OrderParams = {
   number?: string
@@ -19,6 +21,9 @@ type OrderParams = {
 }
 
 const Order = () => {
+  const orderIdFromSocket = useAppSelector(state => state.socket.orderIdFromSocket)
+  const dispatch = useAppDispatch()
+
   const orderList = [
     {
       label: '全部订单'
@@ -98,6 +103,13 @@ const Order = () => {
     setInputReason,
     orderId
   } = useOrderActions()
+
+  useEffect(() => {
+    if (orderIdFromSocket) {
+      handleDetail(orderIdFromSocket)
+      dispatch(clearSocket())
+    }
+  }, [orderIdFromSocket, dispatch, handleDetail])
 
   const [paginationModel, setPaginationModel] = useState({
     page: 0,

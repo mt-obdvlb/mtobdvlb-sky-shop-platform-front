@@ -34,9 +34,9 @@ const DishFlavorChip: React.FC<DishFlavorChipProps> = ({
   flavorList
 }) => {
   return (
-    <div className={'flex h-11 items-center gap-3'}>
+    <div className={'h-13 flex items-center gap-3'}>
       <CommonSelect
-        className={'h-full rounded border-gray-400 bg-white'}
+        className={'h-12.5 rounded border-gray-400 bg-white'}
         placeholder={'请选择口味'}
         options={flavorListData
           .filter(data => data.name === item.name || !flavorList.find(f => f.name === data.name))
@@ -54,13 +54,15 @@ const DishFlavorChip: React.FC<DishFlavorChipProps> = ({
           })
         }}
       />
-      <div className={'flex h-full flex-1 gap-3 rounded border border-gray-400 bg-white p-1'}>
+      <div
+        className={'flex h-full flex-1 gap-3 rounded border border-[#D9DDE2] bg-white px-4 py-2'}
+      >
         {item.value &&
           item.value.split(',').map(item => (
             <Chip
-              className={'rounded bg-yellow-400'}
+              className={'rounded border border-[#F7CA56] bg-[#FEFBF1] text-[#F7CA56]'}
               label={item}
-              deleteIcon={<XIcon />}
+              deleteIcon={<XIcon className={'size-3 text-[#F7CA56]'} />}
               onDelete={() => {
                 setFlavorList(prev => {
                   prev[index].value = prev[index].value

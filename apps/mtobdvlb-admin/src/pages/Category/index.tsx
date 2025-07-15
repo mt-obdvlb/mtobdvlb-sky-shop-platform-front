@@ -204,6 +204,7 @@ const Category = () => {
               title="删除"
               variant={'text'}
               onConfirm={() => handleDelete(params.row.id)}
+              color={'error'}
             >
               删除
             </ConfirmButton>
@@ -212,6 +213,10 @@ const Category = () => {
               size={'small'}
               title={params.row.status === 0 ? '启用' : '禁用'}
               onConfirm={() => handleUpdateStatus(params.row.id, params.row.status === 0 ? 1 : 0)}
+              className={clsx({
+                'text-green-500': params.row.status === 0,
+                'text-red-500': params.row.status === 1
+              })}
             >
               {params.row.status === 0 ? '启用' : '禁用'}
             </ConfirmButton>
@@ -298,7 +303,7 @@ const Category = () => {
           <div className={'flex items-center justify-between'}>
             <div className={'flex items-center gap-4'}>
               <Typography>分类名称:</Typography>
-              <TextField placeholder={'请输入分类名称'} />
+              <TextField size={'small'} placeholder={'请输入分类名称'} />
               <Typography>分类类型:</Typography>
               <CommonSelect
                 placeholder={'请选择'}
@@ -318,12 +323,13 @@ const Category = () => {
                 }}
               />
 
-              <Button className={''} onClick={handleSearch}>
+              <Button className={'bg-[#333] text-white'} onClick={handleSearch}>
                 查询
               </Button>
             </div>
             <div className={'flex gap-3'}>
               <Button
+                className={'bg-[#333] text-white'}
                 startIcon={<PlusIcon className={'size-4'} />}
                 onClick={() => handleUpdateOrAdd(undefined, 1)}
                 variant={'contained'}
@@ -331,6 +337,7 @@ const Category = () => {
                 添加菜品分类
               </Button>
               <Button
+                className={'bg-[#EEC55C] text-black'}
                 startIcon={<PlusIcon className={'size-4'} />}
                 variant={'contained'}
                 onClick={() => handleUpdateOrAdd(undefined, 2)}
@@ -408,14 +415,29 @@ const Category = () => {
             </div>
           </DialogContent>
           <DialogActions className={'px-6'}>
-            <Button onClick={() => setDialogOpen(false)} variant={'outlined'}>
+            <Button
+              className={'border-gray-400 text-gray-400'}
+              onClick={() => setDialogOpen(false)}
+              variant={'outlined'}
+            >
               取消
             </Button>
-            <Button type={'submit'} variant={'contained'}>
+            <Button
+              type={'submit'}
+              variant={'contained'}
+              className={clsx({
+                'bg-[#F6C443] text-black': categoryId,
+                'bg-[#333] text-white': !categoryId
+              })}
+            >
               保存
             </Button>
             {!categoryId && (
-              <Button onClick={handleSubmit(onSubmit)} variant={'contained'}>
+              <Button
+                className={'bg-[#F6C443] text-black'}
+                onClick={handleSubmit(onSubmit)}
+                variant={'contained'}
+              >
                 保存并继续
               </Button>
             )}

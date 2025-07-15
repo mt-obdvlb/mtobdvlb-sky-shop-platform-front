@@ -24,8 +24,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "rootDirs": [".", "./.react-router/types"]
+    "rootDirs": [".", "./.react-router/types", "./src/types"]
   },
-  "include": ["src", ".react-router/types/**/*"],
+  "include": ["src", ".react-router/types/**/*", "src/types/**/*.*"],
   "typeRoots": ["node_modules/@types", "src/types"]
 }

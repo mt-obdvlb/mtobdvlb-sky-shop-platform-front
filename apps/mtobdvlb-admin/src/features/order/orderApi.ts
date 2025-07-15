@@ -95,5 +95,6 @@ export const {
   useCancelOrderMutation,
   useGetOrderStatisticsQuery,
   useCompleteOrderMutation,
-  useDeliveryOrderMutation
+  useDeliveryOrderMutation,
+  util: { invalidateTags }
 } = orderApi

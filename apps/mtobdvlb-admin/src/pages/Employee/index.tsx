@@ -191,7 +191,7 @@ const Employee = () => {
             <Button
               to={'add'}
               component={Link}
-              className={'bg-primary'}
+              className={'bg-primary text-black'}
               variant={'contained'}
               startIcon={<PlusIcon />}
             >

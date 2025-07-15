@@ -23,7 +23,7 @@ import DataItemWithIcon from '@/pages/DashBoard/component/DataItemWithIcon.tsx'
 import { useState } from 'react'
 import { OrderStatus } from '@/types/order.ts'
 import { DataGrid, type GridColDef, type GridRowsProp } from '@mui/x-data-grid'
-import { useGetOrderPageListQuery } from '@/features/order/orderApi.ts'
+import { useGetOrderPageListQuery, useGetOrderStatisticsQuery } from '@/features/order/orderApi.ts'
 import OrderReasonDialog from '@/components/OrderReasonDialog.tsx'
 import OrderDetailDialog from '@/components/OrderDetailDialog.tsx'
 import useOrderActions from '@/hooks/useOrderActions.ts'
@@ -34,6 +34,7 @@ const DashBoard = () => {
   const { data: orderData } = useGetWorkSpaceOverviewOrdersQuery()
   const { data: dishData } = useGetWorkSpaceOverviewDishesQuery()
   const { data: setmealData } = useGetWorkSpaceOverviewSetmealsQuery()
+  const { data: orderStatisticsData } = useGetOrderStatisticsQuery()
 
   const todayDataList = [
     {
@@ -368,7 +369,7 @@ const DashBoard = () => {
                 className={'flex items-center border border-gray-400 px-10 py-2'}
                 selected={selectStatus === OrderStatus.TO_BE_CONFIRMED}
               >
-                <Badge color={'error'} badgeContent={orderData?.data.waitingOrders}>
+                <Badge color={'error'} badgeContent={orderStatisticsData?.data.toBeConfirmed}>
                   <Typography>待接单</Typography>
                 </Badge>
               </ListItemButton>
@@ -386,7 +387,7 @@ const DashBoard = () => {
                 className={'flex items-center border border-gray-400 px-10 py-2'}
                 selected={selectStatus === OrderStatus.CONFIRMED}
               >
-                <Badge color={'error'} badgeContent={orderData?.data.deliveredOrders}>
+                <Badge color={'error'} badgeContent={orderStatisticsData?.data.confirmed}>
                   <Typography>待派送</Typography>
                 </Badge>
               </ListItemButton>

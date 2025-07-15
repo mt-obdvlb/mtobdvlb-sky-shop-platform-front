@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react'
 import { useGetPathNumberId } from '@/hooks/useGetPathNumberId.ts'
 import { skipToken } from '@reduxjs/toolkit/query'
 import { Helmet } from 'react-helmet-async'
+import clsx from 'clsx'
 
 const formSchema = z.object({
   name: z.string().min(1, '请输入菜品名称').max(20),
@@ -158,11 +159,11 @@ const DishAdd = () => {
       <div className={'min-h-full w-full p-4'}>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className={'px-30 flex min-h-full flex-col gap-4 rounded bg-white py-10 shadow'}
+          className={'px-30 flex min-h-full flex-col gap-10 rounded bg-white py-10 shadow'}
         >
           <div className={'grid grid-cols-2 gap-10'}>
             <div className={'flex items-center gap-2'}>
-              <Typography>菜品名称:</Typography>
+              <Typography className={'w-32'}>菜品名称:</Typography>
               <Controller
                 name={'name'}
                 control={control}
@@ -180,7 +181,7 @@ const DishAdd = () => {
               />
             </div>
             <div className={'flex items-center gap-2'}>
-              <Typography>菜品分类:</Typography>
+              <Typography className={'w-32'}>菜品分类:</Typography>
               <Controller
                 name={'categoryId'}
                 control={control}
@@ -199,7 +200,7 @@ const DishAdd = () => {
               />
             </div>
             <div className={'flex items-center gap-2'}>
-              <Typography className={''}>菜品价格:</Typography>
+              <Typography className={'w-32'}>菜品价格:</Typography>
               <Controller
                 name={'price'}
                 control={control}
@@ -223,9 +224,16 @@ const DishAdd = () => {
             </div>
           </div>
           <div className={'flex items-center gap-2'}>
-            <Typography>口味做法配置:</Typography>
+            <Typography className={'w-32'}>口味做法配置:</Typography>
             {flavorList.length > 0 ? (
-              <div className={'flex w-full flex-col gap-3 bg-gray-300 p-3'}>
+              <div
+                className={
+                  'flex flex-1 flex-col gap-3 rounded border border-[#E0E2E7] bg-[#FAFAFB] p-3'
+                }
+              >
+                <Typography variant={'body2'} color={'textDisabled'}>
+                  口味名:
+                </Typography>
                 {flavorList.map((item, index) => (
                   <DishFlavorChip
                     flavorListData={flavorListData}
@@ -239,23 +247,36 @@ const DishAdd = () => {
                   />
                 ))}
                 {flavorList.length < 4 && (
-                  <Button onClick={handleFlavorAdd} variant={'contained'} startIcon={<PlusIcon />}>
+                  <Button
+                    className={'w-30 bg-primary'}
+                    onClick={handleFlavorAdd}
+                    variant={'contained'}
+                    startIcon={<PlusIcon />}
+                  >
                     添加口味
                   </Button>
                 )}
               </div>
             ) : (
-              <Button onClick={handleFlavorAdd} variant={'contained'} startIcon={<PlusIcon />}>
+              <Button
+                onClick={handleFlavorAdd}
+                className={'bg-primary'}
+                variant={'contained'}
+                startIcon={<PlusIcon />}
+              >
                 添加口味
               </Button>
             )}
           </div>
           <div className={'flex items-center gap-2'}>
-            <Typography>菜品图片:</Typography>
+            <Typography className={'w-32'}>菜品图片:</Typography>
             <UploadImage control={control} name={'image'} />
+            <Typography variant={'caption'} className={'ml-5 max-w-40 text-gray-400'}>
+              图片大小不超过2M 仅能上传 PNG JPEG JPG类型图片
+            </Typography>
           </div>
           <div className={'flex items-center gap-2'}>
-            <Typography className={''}>菜品描述:</Typography>
+            <Typography className={'w-32'}>菜品描述:</Typography>
             <Controller
               name={'description'}
               control={control}
@@ -271,14 +292,21 @@ const DishAdd = () => {
             />
           </div>
           <div className={'flex items-center justify-center gap-5 border-t border-t-gray-300 py-5'}>
-            <Button className={'outline'} component={Link} to={'/dish'}>
+            <Button variant={'outlined'} className={'default'} component={Link} to={'/dish'}>
               取消
             </Button>
-            <Button variant={'contained'} onClick={handleSubmit(onSave)}>
+            <Button
+              variant={'contained'}
+              className={clsx({
+                'bg-primary text-black': id,
+                'bg-[#333] text-white': !id
+              })}
+              onClick={handleSubmit(onSave)}
+            >
               保存
             </Button>
             {!id && (
-              <Button variant={'contained'} type={'submit'}>
+              <Button variant={'contained'} className={'bg-primary text-black'} type={'submit'}>
                 保存并继续
               </Button>
             )}

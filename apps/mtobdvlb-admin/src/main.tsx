@@ -25,10 +25,42 @@ dayjs.locale('zh-cn')
 
 const theme = createTheme(
   {
-    palette: {
-      primary: { main: '#1976d2' }
-    },
-    cssVariables: true
+    palette: {},
+    cssVariables: true,
+    components: {
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#f6c443', // 你想要的焦点颜色
+              borderWidth: '1px'
+            }
+          }
+        }
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            '&.Mui-focused': {
+              color: '#f6c443' // label 聚焦时颜色
+            }
+          }
+        }
+      },
+      MuiCheckbox: {
+        styleOverrides: {
+          root: {
+            '&.Mui-checked': {
+              color: '#f6c443' // 勾选框选中时的颜色
+            },
+
+            '&:hover': {
+              color: '#F6C343' // 鼠标悬停时的背景颜色
+            }
+          }
+        }
+      }
+    }
   },
   zhCN,
   gridZhCN

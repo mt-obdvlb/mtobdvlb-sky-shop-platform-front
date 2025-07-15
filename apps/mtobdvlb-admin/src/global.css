@@ -12,5 +12,15 @@ html, body, #root {
   
   .bg-primary {
     background-color: #F6C343;
+    color: #000;
   }
+  
+  .default {
+    @apply text-gray-400 border-gray-400;
+  }
+  
+  .secondary {
+    @apply text-white bg-[#333];
+  }
+  
 }

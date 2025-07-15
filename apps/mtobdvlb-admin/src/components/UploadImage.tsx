@@ -1,9 +1,11 @@
 import { Controller, type FieldValues, type UseControllerProps } from 'react-hook-form'
 import { useCallback, useRef } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { Box, CircularProgress, Typography } from '@mui/material'
+import { Box, CircularProgress } from '@mui/material'
 import { useUploadMutation } from '@/features/common/commonApi.ts'
 import { toast } from 'react-toastify'
+import clsx from 'clsx'
+import { UploadIcon } from 'lucide-react'
 
 type UploadImageProps<T extends FieldValues> = {
   control: UseControllerProps<T>['control']
@@ -49,7 +51,10 @@ const UploadImage = <T extends FieldValues>({ control, name }: UploadImageProps<
               <Box
                 {...getRootProps()}
                 className={
-                  'size-42 flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-gray-300 object-cover'
+                  'h-45 flex w-60 cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-gray-300 object-cover hover:border-[#F6C443] ' +
+                  clsx({
+                    'border-none': field.value
+                  })
                 }
               >
                 <input {...getInputProps()} />
@@ -61,7 +66,7 @@ const UploadImage = <T extends FieldValues>({ control, name }: UploadImageProps<
                   </Box>
                 ) : (
                   <Box className="flex h-full w-full items-center justify-center">
-                    <Typography className="text-gray-500">拖拽或点击来上传文件</Typography>
+                    <UploadIcon className={'size-10 text-gray-500'} />
                   </Box>
                 )}
               </Box>
