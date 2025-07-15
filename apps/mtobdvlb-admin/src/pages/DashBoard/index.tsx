@@ -261,7 +261,7 @@ const DashBoard = () => {
   return (
     <>
       <Helmet>
-        <title>仪表盘</title>
+        <title>工作台</title>
       </Helmet>
       <div className={'flex min-h-full flex-col gap-5 p-5'}>
         <div className={'min-h-50 flex flex-col gap-5 rounded bg-white p-5 shadow'}>
