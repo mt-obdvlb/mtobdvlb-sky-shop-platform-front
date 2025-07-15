@@ -13,5 +13,35 @@
   "embeddedLanguageFormatting": "auto",
   "plugins": [
     "prettier-plugin-tailwindcss"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.vue"
+      ],
+      "options": {
+        "parser": "vue"
+      }
+    },
+    {
+      "files": [
+        "*.scss",
+        "*.css"
+      ],
+      "options": {
+        "parser": "scss"
+      }
+    },
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
+      "options": {
+        "parser": "babel-ts"
+      }
+    }
   ]
 }

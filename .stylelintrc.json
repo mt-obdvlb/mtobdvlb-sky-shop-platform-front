@@ -1,5 +1,40 @@
 {
   "extends": [
-    "stylelint-config-tailwindcss"
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier"
+  ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-config-rational-order/plugin"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "no-empty-source": null,
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      "at-variables",
+      "declarations",
+      {
+        "type": "at-rule",
+        "name": "include"
+      },
+      {
+        "type": "at-rule",
+        "name": "media"
+      },
+      "rules"
+    ],
+    "order/properties-order": [],
+    "plugin/rational-order": true,
+    "value-keyword-case": null,
+    "no-descending-specificity": null
+  },
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.json"
   ]
 }
