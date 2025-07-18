@@ -4,19 +4,10 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": [
-      "@dcloudio/types",
-      "@ttou/uview-typings/v3",
-      "@ttou/uview-typings/refs"
-    ],
+    "lib": ["esnext", "dom"],
+    "types": ["@dcloudio/types", "uview-plus/types"],
     "isolatedModules": true,
     "strict": true,
     "target": "ESNext",

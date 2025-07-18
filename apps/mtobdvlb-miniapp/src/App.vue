@@ -20,4 +20,9 @@
     console.log('App Hide')
   })
 </script>
-<style></style>
+<style lang="scss">
+@import 'uview-plus/index.scss';
+page{
+  height: 100vh;
+}
+</style>

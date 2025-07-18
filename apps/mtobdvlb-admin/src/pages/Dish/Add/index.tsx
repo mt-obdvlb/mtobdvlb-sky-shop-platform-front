@@ -100,15 +100,16 @@ const DishAdd = () => {
         console.log(error)
         throw error
       }
-    }
-    try {
-      await addDish(data).unwrap()
-      toast.success('添加成功')
-      reset()
-      setFlavorList([])
-    } catch (error) {
-      console.log(error)
-      throw error
+    } else {
+      try {
+        await addDish(data).unwrap()
+        toast.success('添加成功')
+        reset()
+        setFlavorList([])
+      } catch (error) {
+        console.log(error)
+        throw error
+      }
     }
   }
 
