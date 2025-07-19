@@ -88,10 +88,8 @@ const handleAddShopCart = () => {
     flex-direction: column;
   }
 
-  .body, .cate-tab {
-  overflow: auto;
-  width: 100%;
-  
+  .body{
+  overflow: auto;  
 }
 
 .page-item {
