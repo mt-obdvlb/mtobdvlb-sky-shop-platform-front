@@ -42,6 +42,7 @@ request.interceptors.response.use(
     const userStore = useUserStore()
     if (err.statusCode === 401) {
       userStore.clearUserInfo()
+      void uni.reLaunch({ url: '/pages/my/my' })
     }
     return Promise.reject(err)
   }
