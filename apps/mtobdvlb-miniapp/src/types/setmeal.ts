@@ -14,6 +14,7 @@ export type Setmeal = {
   createTime: string
   createUser: number
   updateUser: number
+  type: string // 'dish' or 'setmeal'
 }
 
 export type SetmealListResponse = Setmeal[]

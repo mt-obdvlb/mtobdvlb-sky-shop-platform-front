@@ -1,68 +1,64 @@
 {
-	"pages": [
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/my/my",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/order/order",
-			"style": {
-				"navigationBarTitleText": "订单管理"
-			}
-		},
-		{
-			"path": "pages/order/orderDetail",
-			"style": {
-				"navigationBarTitleText": "订单详情"
-			}
-		},
-		{
-			"path": "pages/address/address",
-			"style": {
-				"navigationBarTitleText": "地址管理"
-			}
-		},
-		{
-			"path": "pages/address/addressAdd",
-			"style": {
-				"navigationBarTitleText": "addressAdd"
-			}
-		},
-		{
-			"path": "pages/order/orderSubmit",
-			"style": {
-				"navigationBarTitleText": "提交订单"
-			}
-		},
-		{
-			"path": "pages/payment/payment",
-			"style": {
-				"navigationBarTitleText": "payment"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	},
-	"easycom": {
-		"autoscan": true,
-		"custom": {
-			"^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
-			"^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",
-			"^u-([^-].*)": "uview-plus/components/u-$1/u-$1.vue"
-		}
-	}
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "uni-app",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/my/my",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/order/order",
+      "style": {
+        "navigationBarTitleText": "订单管理"
+      }
+    },
+    {
+      "path": "pages/order/orderDetail",
+      "style": {
+        "navigationBarTitleText": "订单详情"
+      }
+    },
+    {
+      "path": "pages/address/address",
+      "style": {
+        "navigationBarTitleText": "地址管理"
+      }
+    },
+    {
+      "path": "pages/address/addressAdd",
+      "style": {}
+    },
+    {
+      "path": "pages/order/orderSubmit",
+      "style": {
+        "navigationBarTitleText": "提交订单"
+      }
+    },
+    {
+      "path": "pages/payment/payment",
+      "style": {}
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^u-([^-].*)": "uview-plus/components/u-$1/u-$1.vue"
+    }
+  }
 }

@@ -3,7 +3,7 @@ export type AddressBook = {
   userId: number
   consignee: string
   phone: string
-  sex: string // "0" | "1" 也可以更精确
+  sex: '0' | '1' // "0" | "1" 也可以更精确
   provinceCode: string
   provinceName: string
   cityCode: string
@@ -12,5 +12,5 @@ export type AddressBook = {
   districtName: string
   detail: string
   label: string
-  isDefault: number // 0 | 1 也可以更精确
+  isDefault: 0 | 1 // 0 | 1 也可以更精确
 }

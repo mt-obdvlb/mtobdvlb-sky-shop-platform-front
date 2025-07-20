@@ -25,8 +25,8 @@ export const addAddress = (data: AddressBook) =>
 export const updateAddress = (id: number, data: AddressBook) =>
   request.put<AddressBook>(`${baseURL}${id}`, data)
 
-export const updateAddressDefault = (id: number) =>
-  request.put<AddressBook>(`${baseURL}${API.updateDefault}/${id}`)
+export const updateAddressDefault = (data: AddressBook) =>
+  request.put(`${baseURL}${API.updateDefault}`, data)
 
 export const deleteAddress = (id: number) =>
   request.delete(`${baseURL}${API.id}/${id}`)

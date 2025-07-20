@@ -18,6 +18,7 @@ export type Dish = {
   updateTime: string
   categoryName: string
   dishFlavors: DishFlavor[]
+  type?: string // 'dish' or 'setmeal'
 }
 
 export type DishItem = {

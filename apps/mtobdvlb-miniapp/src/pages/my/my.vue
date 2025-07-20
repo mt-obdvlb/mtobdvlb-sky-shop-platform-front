@@ -6,10 +6,10 @@
       <up-text text="微信用户"></up-text>
     </view>
     <up-cell-group class="cell-group">
-      <up-cell is-link icon="map-fill" title="地址管理" class="cell-button">
+      <up-cell url="/pages/address/address" is-link icon="map-fill" title="地址管理" class="cell-button">
 
       </up-cell>
-      <up-cell is-link icon="file-text-fill" title="历史订单" class="cell-button">
+      <up-cell url="/pages/order/order" is-link icon="file-text-fill" title="历史订单" class="cell-button">
 
       </up-cell>
     </up-cell-group>

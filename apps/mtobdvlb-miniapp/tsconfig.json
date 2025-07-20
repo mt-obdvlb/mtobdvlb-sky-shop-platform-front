@@ -4,20 +4,45 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
-    "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types", "uview-plus/types"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "@dcloudio/types",
+      "uview-plus/types",
+      "@uni-helper/uni-app-types",
+      "miniprogram-api-typings"
+    ],
     "isolatedModules": true,
-    "strict": true,
-    "target": "ESNext",
     "module": "ESNext",
-    "verbatimModuleSyntax": true
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "noImplicitThis": true,
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue"
-  ]
+  ],
+  "vueCompilerOptions": {
+    // 调整 Volar（Vue 语言服务工具）解析行为，用于为 uni-app 组件提供 TypeScript 类型
+    "plugins": [
+      "@uni-helper/uni-app-types/volar-plugin"
+    ]
+  }
 }
