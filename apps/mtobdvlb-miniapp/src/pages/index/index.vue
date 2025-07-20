@@ -63,7 +63,7 @@
   import { ref } from 'vue'
   import type { CategoryListResponse } from '@/types/category'
 import NavBar from './components/NavBar.vue'
-import Cart from './components/Cart.vue'
+import Cart from '@/components/Cart.vue'
 import { getDishList } from '@/api/dish'
 import { getSetmealList } from '@/api/setmeal'
 import type { Setmeal } from '@/types/setmeal'

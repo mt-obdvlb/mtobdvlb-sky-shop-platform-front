@@ -37,14 +37,10 @@
       "style": {}
     },
     {
-      "path": "pages/order/orderSubmit",
+      "path": "pages/payment/payment",
       "style": {
         "navigationBarTitleText": "提交订单"
       }
-    },
-    {
-      "path": "pages/payment/payment",
-      "style": {}
     }
   ],
   "globalStyle": {
